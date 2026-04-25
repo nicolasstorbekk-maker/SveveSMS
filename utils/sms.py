@@ -28,9 +28,6 @@ def _send(to: str, message: str) -> None:
         timeout=10,
     )
     response.raise_for_status()
-    data = response.json()
-    if data.get("response", {}).get("fatalError"):
-        raise RuntimeError(f"Sveve feil: {data['response']['fatalError']}")
 
 
 def send_feedback_request(customer_name: str, phone_number: str, token: str) -> None:
